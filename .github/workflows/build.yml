@@ -19,6 +19,7 @@ jobs:
           java-version: 17
 
       - name: Build with Maven
+        working-directory: PinguBank_Clean/pom.xml
         run: mvn clean package -DskipTests
 
       - name: List files in target directory
