@@ -1,4 +1,4 @@
-package de.pinguinobank;
+package de.pingubank;
 
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
