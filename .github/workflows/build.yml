@@ -21,9 +21,6 @@ jobs:
       - name: Build with Maven
         working-directory: PinguBank_Clean
         run: mvn clean package -DskipTests
-
-      - name: List files in target directory
-        run: ls -l PinguBank
         
       - name: Upload JAR
         uses: actions/upload-artifact@v4
