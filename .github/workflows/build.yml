@@ -23,16 +23,7 @@ jobs:
         run: mvn clean package -DskipTests
 
       - name: List files in target directory
-        run: ls -l target/
-
-      - name: Check current directory files before build
-        run: ls -la
-
-      - name: Build with Maven
-        run: mvn clean package -DskipTests
-
-      - name: Check target directory after build
-        run: ls -la target/
+        run: ls -l PinguBank_Clean/
         
       - name: Upload JAR
         uses: actions/upload-artifact@v4
