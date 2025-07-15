@@ -23,11 +23,11 @@ jobs:
         run: mvn clean package -DskipTests
 
       - name: List files in target directory
-        run: ls -l PinguBank_Clean/
+        run: ls -l PinguBank/
         
       - name: Upload JAR
         uses: actions/upload-artifact@v4
         with:
           name: PinguBank
-          path: target/*.jar
+          path: PinguBank/*.jar
           
