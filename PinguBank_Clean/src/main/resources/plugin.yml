@@ -1,9 +1,0 @@
-name: PinguBank
-main: de.pingubank.PinguBank
-version: 1.0
-api-version: 1.20
-commands:
-  bank:
-    description: Zeigt den Kontostand an
-  kredit:
-    description: Nimmt einen Kredit auf
