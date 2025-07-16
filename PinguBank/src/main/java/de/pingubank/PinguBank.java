@@ -24,12 +24,14 @@ public class PinguBank extends JavaPlugin {
         // Listener registrieren
         getServer().getPluginManager().registerEvents(new listener.InventoryClickListener(), this);
         // TODO: Daten laden, falls nötig
+        BankManager.loadData();
     }
 
     @Override
     public void onDisable() {
         getLogger().info("§c[PinguBank] Plugin deaktiviert.");
         // TODO: Daten speichern, falls nötig
+        BankManager.saveData();
     }
 
     public static PinguBank getInstance() {
