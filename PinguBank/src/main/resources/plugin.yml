@@ -1,0 +1,27 @@
+name: PinguBank
+version: 1.0
+main: de.pingubank.PinguBank
+api-version: 1.20
+author: Lars
+description: Ein einfaches Bank-Plugin mit GUI, Kredit und Transfersystem
+
+commands:
+  bank:
+    description: Öffnet die Bank-GUI
+  geld:
+    description: Zeigt dein Handkontoguthaben
+  geldbank:
+    description: Zeigt dein Bankkontoguthaben
+  pay:
+    description: Zahlt mit dem Handkonto an einen Spieler
+    usage: /pay <Spieler> <Betrag>
+  transfer:
+    description: Zahlt mit dem Bankkonto an einen Spieler
+    usage: /transfer <Spieler> <Betrag>
+  bankfreeze:
+    description: Sperrt das Bankkonto eines Spielers
+    usage: /bankfreeze <Spieler>
+  bankunfreeze:
+    description: Entsperrt das Bankkonto eines Spielers
+    usage: /bankunfreeze <Spieler>
+    
