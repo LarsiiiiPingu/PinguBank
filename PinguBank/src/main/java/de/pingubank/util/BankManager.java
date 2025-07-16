@@ -76,35 +76,38 @@ public class BankManager {
         saveData();
     }
 
-    public static AnvilGUI.Response deposit(Player player, double betrag) {
-        UUID uuid = player.getUniqueId();
-        if (isFrozen(uuid)) {
-            player.sendMessage("§7[§b§lBank§r§7] §7Dein Bankkonto Ist Eingefroren.");
-            return AnvilGUI.Response.close();
-        }
-
-        double neuerBetrag = getBankBalance(uuid) + betrag;
-        bankKonten.put(uuid, neuerBetrag);
-        player.sendMessage("§7[§b§lBank§r§7] §aEinzahlung erfolgreich§7. Neuer Kontostand: §e" + neuerBetrag);
-        saveData();
-        return AnvilGUI.Response.close();
+    public static boolean deposit(Player player, double betrag) {
+    UUID uuid = player.getUniqueId();
+    if (isFrozen(uuid)) {
+        player.sendMessage("§7[§b§lBank§r§7] §7Dein Bankkonto Ist Eingefroren.");
+        return false;
     }
 
-    public static AnvilGUI.Response withdraw(Player player, double betrag) {
-        UUID uuid = player.getUniqueId();
-        if (isFrozen(uuid)) {
-            player.sendMessage("§7[§b§lBank§r§7] §7Dein Bankkonto Ist Eingefroren.");
-            return AnvilGUI.Response.close();
-        }
+    // Hier könntest du noch prüfen, ob Spieler genug Handgeld hat (falls implementiert)
 
-        double aktuell = getBankBalance(uuid);
-        if (betrag > aktuell) {
-            return AnvilGUI.Response.text("§cZu wenig Geld!");
-        }
+    double neuerBetrag = getBankBalance(uuid) + betrag;
+    bankKonten.put(uuid, neuerBetrag);
+    player.sendMessage("§7[§b§lBank§r§7] §aEinzahlung erfolgreich§7. Neuer Kontostand: §e" + neuerBetrag);
+    saveData();
+    return true;
+}
 
-        bankKonten.put(uuid, aktuell - betrag);
-        player.sendMessage("§7[§b§lBank§r§7] §aAuszahlung erfolgreich§7. Neuer Kontostand: §e" + (aktuell - betrag));
-        saveData();
-        return AnvilGUI.Response.close();
+public static boolean withdraw(Player player, double betrag) {
+    UUID uuid = player.getUniqueId();
+    if (isFrozen(uuid)) {
+        player.sendMessage("§7[§b§lBank§r§7] §7Dein Bankkonto Ist Eingefroren.");
+        return false;
     }
+
+    double aktuell = getBankBalance(uuid);
+    if (betrag > aktuell) {
+        return false;
+    }
+
+    bankKonten.put(uuid, aktuell - betrag);
+    player.sendMessage("§7[§b§lBank§r§7] §aAuszahlung erfolgreich§7. Neuer Kontostand: §e" + (aktuell - betrag));
+    saveData();
+    return true;
+}
+    
 }
