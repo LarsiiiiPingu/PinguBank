@@ -21,6 +21,8 @@ public class PinguBank extends JavaPlugin {
         getCommand("bankfreeze").setExecutor(new commands.BankFreezeCommand());
         getCommand("bankunfreeze").setExecutor(new commands.BankUnfreezeCommand());
 
+        // Listener registrieren
+        getServer().getPluginManager().registerEvents(new listener.InventoryClickListener(), this);
         // TODO: Daten laden, falls nötig
     }
 
