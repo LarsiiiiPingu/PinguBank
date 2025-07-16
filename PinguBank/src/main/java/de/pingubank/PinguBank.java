@@ -25,6 +25,9 @@ public class PinguBank extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new listener.InventoryClickListener(), this);
         // TODO: Daten laden, falls nötig
         BankManager.loadData();
+
+        this.getCommand("bank").setExecutor(new BankCommand(this));
+        getServer().getPluginManager().registerEvents(new BankGuiListener(this), this);
     }
 
     @Override
