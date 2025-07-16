@@ -35,7 +35,7 @@ public class PayCommand implements CommandExecutor {
             return true;
         }
 
-        if (betrag <= 1 || betrag > 5000) {
+        if (betrag <= 0 || betrag > 5000) {
             senderPlayer.sendMessage("§cBetrag muss zwischen 1 und 5000 Coins liegen.");
             return true;
         }
