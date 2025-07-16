@@ -1,9 +1,17 @@
 package de.pingubank;
 
-import org.bukkit.Bukkit;
+import de.pingubank.commands.BankCommand;
+import de.pingubank.commands.BankFreezeCommand;
+import de.pingubank.commands.BankUnfreezeCommand;
+import de.pingubank.commands.GeldCommand;
+import de.pingubank.commands.GeldBankCommand;
+import de.pingubank.commands.PayCommand;
+import de.pingubank.commands.TransferCommand;
+import de.pingubank.listeners.BankGuiListener;
+import de.pingubank.util.BankManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class PinguBank extends JavaPlugin {
+public final class PinguBank extends JavaPlugin {
 
     private static PinguBank instance;
 
@@ -12,32 +20,29 @@ public class PinguBank extends JavaPlugin {
         instance = this;
         getLogger().info("§b[PinguBank] Plugin aktiviert.");
 
-        // Command-Registrierung
-        getCommand("bank").setExecutor(new commands.BankCommand());
-        getCommand("geld").setExecutor(new commands.GeldCommand());
-        getCommand("geldbank").setExecutor(new commands.GeldBankCommand());
-        getCommand("pay").setExecutor(new commands.PayCommand());
-        getCommand("transfer").setExecutor(new commands.TransferCommand());
-        getCommand("bankfreeze").setExecutor(new commands.BankFreezeCommand());
-        getCommand("bankunfreeze").setExecutor(new commands.BankUnfreezeCommand());
-
-        // Listener registrieren
-        getServer().getPluginManager().registerEvents(new listener.InventoryClickListener(), this);
-        // TODO: Daten laden, falls nötig
+        // Bank-Daten laden
         BankManager.loadData();
 
-        this.getCommand("bank").setExecutor(new BankCommand(this));
+        // Alle Befehle registrieren
+        getCommand("bank").setExecutor(new BankCommand(this));
+        getCommand("geld").setExecutor(new GeldCommand());
+        getCommand("geldbank").setExecutor(new GeldBankCommand());
+        getCommand("pay").setExecutor(new PayCommand());
+        getCommand("transfer").setExecutor(new TransferCommand());
+        getCommand("bankfreeze").setExecutor(new BankFreezeCommand());
+        getCommand("bankunfreeze").setExecutor(new BankUnfreezeCommand());
+
+        // GUI-Listener registrieren
         getServer().getPluginManager().registerEvents(new BankGuiListener(this), this);
     }
 
     @Override
     public void onDisable() {
-        getLogger().info("§c[PinguBank] Plugin deaktiviert.");
-        // TODO: Daten speichern, falls nötig
         BankManager.saveData();
+        getLogger().info("§c[PinguBank] Plugin deaktiviert.");
     }
 
     public static PinguBank getInstance() {
         return instance;
     }
-}
+    }
