@@ -65,5 +65,35 @@ public class BankGUI {
                 player.closeInventory();
                 new AnvilGUI.Builder()
                         .plugin(Bukkit.getPluginManager().getPlugin("PinguBank"))
-                        .title("Betrag ei
-                               
+                        .title("Betrag einzahlen")
+                        .text("")
+                        .onComplete((p, text) -> {
+                            try {
+                                double betrag = Double.parseDouble(text);
+                                return BankManager.deposit(p, betrag);
+                            } catch (NumberFormatException e) {
+                                return AnvilGUI.Response.text("§cNur Zahlen!");
+                            }
+                        })
+                        .open(player);
+            }
+
+            if (name.equals("§cAuszahlen")) {
+                player.closeInventory();
+                new AnvilGUI.Builder()
+                        .plugin(Bukkit.getPluginManager().getPlugin("PinguBank"))
+                        .title("Betrag auszahlen")
+                        .text("")
+                        .onComplete((p, text) -> {
+                            try {
+                                double betrag = Double.parseDouble(text);
+                                return BankManager.withdraw(p, betrag);
+                            } catch (NumberFormatException e) {
+                                return AnvilGUI.Response.text("§cNur Zahlen!");
+                            }
+                        })
+                        .open(player);
+            }
+        }
+    }
+                                    }
