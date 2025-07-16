@@ -19,12 +19,12 @@ jobs:
           java-version: 17
 
       - name: Build with Maven
-        working-directory: PinguBank_Clean
+        working-directory: PinguBank
         run: mvn clean package -DskipTests
         
       - name: Upload JAR
         uses: actions/upload-artifact@v4
         with:
           name: PinguBank
-          path: PinguBank_Clean/target/*.jar
+          path: PinguBank/target/*.jar
           
