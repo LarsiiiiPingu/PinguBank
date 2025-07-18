@@ -67,13 +67,12 @@ public class BankGUI {
         Bukkit.getPluginManager().getPlugin("PinguBank"), // pass your plugin instance
         player,
         (input) -> {
-            try {
-                double betrag = Double.parseDouble(input);
-                return BankManager.deposit(player, betrag); // Use the player from scope
-            } catch (NumberFormatException e) {
-                player.sendMessage("§cNur Zahlen!");
-                return null;
-            }
+    try {
+        double betrag = Double.parseDouble(input);
+        BankManager.deposit(player, betrag);
+    } catch (NumberFormatException e) {
+        player.sendMessage("§cNur Zahlen!");
+    }
         }
     );
 }
@@ -86,10 +85,9 @@ if (name.equals("§cAuszahlen")) {
         (input) -> {
             try {
                 double betrag = Double.parseDouble(input);
-                return BankManager.withdraw(player, betrag);
+                BankManager.withdraw(player, betrag);
             } catch (NumberFormatException e) {
                 player.sendMessage("§cNur Zahlen!");
-                return null;
             }
         }
     );
