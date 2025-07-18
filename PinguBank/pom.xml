@@ -30,7 +30,7 @@
       <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
     </repository>
     <repository>
-      <id>vault-repo</id>
+      <id>jitpack.io</id>
       <url>https://jitpack.io</url>
     </repository>
   </repositories>
@@ -50,7 +50,7 @@
       <scope>provided</scope>
     </dependency>
     <dependency>
-      <groupId>vault-repo</groupId>
+      <groupId>com.github.MilkBowl</groupId>
       <artifactId>VaultAPI</artifactId>
       <version>1.7</version>
       <scope>provided</scope>
