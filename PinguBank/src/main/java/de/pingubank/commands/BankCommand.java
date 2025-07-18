@@ -19,7 +19,7 @@ import org.bukkit.inventory.meta.SkullMeta;
 import java.util.UUID;
 
 public class BankCommand implements CommandExecutor {
-
+    private final Economy economy = Bukkit.getServicesManager().getRegistration(Economy.class).getProvider();
     private final PinguBank plugin;
 
     public BankCommand(PinguBank plugin) {
@@ -76,5 +76,4 @@ public class BankCommand implements CommandExecutor {
 
         return true;
     }
-    private final Economy economy = Bukkit.getServicesManager().getRegistration(Economy.class).getProvider();
                          }
