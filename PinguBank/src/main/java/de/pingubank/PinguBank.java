@@ -9,6 +9,7 @@ import de.pingubank.commands.PayCommand;
 import de.pingubank.commands.TransferCommand;
 import de.pingubank.listeners.BankGuiListener;
 import de.pingubank.util.BankManager;
+import de.pingubank.util.AnvilGUI;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class PinguBank extends JavaPlugin {
