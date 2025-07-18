@@ -16,7 +16,7 @@ public class GeldCommand implements CommandExecutor {
             return true;
         }
 
-        double geld = player.getBalance(); // Handgeld (normales Vault-Konto)
+        double geld = economy.getBalance(player); // Handgeld (normales Vault-Konto)
         player.sendMessage("§7Dein Geld: §e" + geld + " Coins");
         return true;
     }
