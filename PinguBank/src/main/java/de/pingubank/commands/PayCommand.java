@@ -9,7 +9,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class PayCommand implements CommandExecutor {
-
+    private final Economy economy = Bukkit.getServicesManager().getRegistration(Economy.class).getProvider();
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (!(sender instanceof Player senderPlayer)) {
@@ -55,5 +55,4 @@ public class PayCommand implements CommandExecutor {
         Bukkit.getLogger().info("[Bank] " + senderPlayer.getName() + " Zahlt Zu " + target.getName() + " Summe: " + betrag);
         return true;
     }
-    private final Economy economy = Bukkit.getServicesManager().getRegistration(Economy.class).getProvider();
 }
