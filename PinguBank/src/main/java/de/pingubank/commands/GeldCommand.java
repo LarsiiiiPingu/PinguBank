@@ -1,6 +1,8 @@
 package de.pingubank.commands;
 
 import org.bukkit.command.Command;
+import net.milkbowl.vault.economy.Economy;
+import org.bukkit.Bukkit;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -18,4 +20,5 @@ public class GeldCommand implements CommandExecutor {
         player.sendMessage("§7Dein Geld: §e" + geld + " Coins");
         return true;
     }
+    private final Economy economy = Bukkit.getServicesManager().getRegistration(Economy.class).getProvider();
 }
