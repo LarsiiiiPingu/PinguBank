@@ -42,14 +42,11 @@ public class TransferCommand implements CommandExecutor {
         }
 
         double senderKonto = BankManager.getBankBalance(senderPlayer.getUniqueId());
-        if (senderKonto < betrag) {
-            senderPlayer.sendMessage("§cDu hast nicht genug Geld auf deinem Bankkonto.");
-            return true;
+        if (economy.getBalance(senderPlayer) < betrag) {
+        // ...
         }
-
-        // Übertragen
-        BankManager.withdraw(senderPlayer, betrag);
-        BankManager.deposit(target, betrag);
+        economy.withdrawPlayer(senderPlayer, betrag);
+        economy.depositPlayer(target, betrag);
 
         senderPlayer.sendMessage("§7Du Hast Erfolgreich §e" + betrag + " §7An §3" + target.getName() + " §aÜberwiesen§7.");
         target.sendMessage("§7Du Hast §e" + betrag + " §7Von §3" + senderPlayer.getName() + " §aErhalten.");
