@@ -55,4 +55,5 @@ public class PayCommand implements CommandExecutor {
         Bukkit.getLogger().info("[Bank] " + senderPlayer.getName() + " Zahlt Zu " + target.getName() + " Summe: " + betrag);
         return true;
     }
+    private final Economy economy = Bukkit.getServicesManager().getRegistration(Economy.class).getProvider();
 }
