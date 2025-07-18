@@ -1,6 +1,8 @@
 package de.pingubank.commands;
 
 import de.pingubank.util.BankManager;
+import net.milkbowl.vault.economy.Economy;
+import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
