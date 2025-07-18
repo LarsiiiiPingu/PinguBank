@@ -21,4 +21,5 @@ public class GeldBankCommand implements CommandExecutor {
         player.sendMessage("§7Dein Bankguthaben: §e" + kontostand + " Coins");
         return true;
     }
+    private final Economy economy = Bukkit.getServicesManager().getRegistration(Economy.class).getProvider();
 }
