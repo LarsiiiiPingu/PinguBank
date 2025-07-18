@@ -2,6 +2,7 @@ package de.pingubank.commands;
 
 import de.pingubank.util.BankManager;
 import org.bukkit.Bukkit;
+import net.milkbowl.vault.economy.Economy;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -56,4 +57,5 @@ public class TransferCommand implements CommandExecutor {
         Bukkit.getLogger().info("[Bank] " + senderPlayer.getName() + " Transfer Zu " + target.getName() + " Summe: " + betrag);
         return true;
     }
+    private final Economy economy = Bukkit.getServicesManager().getRegistration(Economy.class).getProvider();
 }
