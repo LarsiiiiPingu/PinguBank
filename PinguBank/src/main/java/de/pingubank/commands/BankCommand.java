@@ -3,6 +3,7 @@ package de.pingubank.commands;
 import de.pingubank.PinguBank;
 import de.pingubank.util.AnvilGUI;
 import de.pingubank.util.BankManager;
+import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.SkullType;
@@ -75,4 +76,5 @@ public class BankCommand implements CommandExecutor {
 
         return true;
     }
+    private final Economy economy = Bukkit.getServicesManager().getRegistration(Economy.class).getProvider();
                          }
