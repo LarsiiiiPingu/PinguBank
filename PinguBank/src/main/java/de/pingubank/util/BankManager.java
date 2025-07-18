@@ -1,7 +1,7 @@
 package de.pingubank.util;
 
 import de.pingubank.PinguBank;
-import de.helmion.anvilgui.AnvilGUI;
+import de.pingubank.util.AnvilGUI;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
