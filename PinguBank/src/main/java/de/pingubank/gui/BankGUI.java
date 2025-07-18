@@ -63,11 +63,7 @@ public class BankGUI {
 
             if (name.equals("§aEinzahlen")) {
                 player.closeInventory();
-                new AnvilGUI.Builder()
-                        .plugin(Bukkit.getPluginManager().getPlugin("PinguBank"))
-                        .title("Betrag einzahlen")
-                        .text("")
-                        .onComplete((p, text) -> {
+                new AnvilGUI(plugin, player, (input) -> {
                             try {
                                 double betrag = Double.parseDouble(text);
                                 return BankManager.deposit(p, betrag);
