@@ -41,13 +41,11 @@ public class PayCommand implements CommandExecutor {
             return true;
         }
 
-        if (senderPlayer.getBalance() < betrag) {
-            senderPlayer.sendMessage("§cDu hast nicht genug Geld.");
-            return true;
+        if (economy.getBalance(senderPlayer) < betrag) {
+        // ...
         }
-
-        senderPlayer.withdrawPlayer(betrag);
-        target.depositPlayer(betrag);
+        economy.withdrawPlayer(senderPlayer, betrag);
+        economy.depositPlayer(target, betrag);
 
         senderPlayer.sendMessage("§7Du Hast §e" + betrag + " §7An §3" + target.getName() + " §aGezahlt§7.");
         target.sendMessage("§7Du Hast §e" + betrag + " §7Von §3" + senderPlayer.getName() + " §aErhalten.");
