@@ -62,34 +62,38 @@ public class BankGUI {
             String name = clicked.getItemMeta().getDisplayName();
 
             if (name.equals("§aEinzahlen")) {
-                player.closeInventory();
-                new AnvilGUI(plugin, player, (input) -> {
-                            try {
-                                double betrag = Double.parseDouble(text);
-                                return BankManager.deposit(p, betrag);
-                            } catch (NumberFormatException e) {
-                                return AnvilGUI.Response.text("§cNur Zahlen!");
-                            }
-                        })
-                        .open(player);
+    player.closeInventory();
+    new AnvilGUI(
+        Bukkit.getPluginManager().getPlugin("PinguBank"), // pass your plugin instance
+        player,
+        (input) -> {
+            try {
+                double betrag = Double.parseDouble(input);
+                return BankManager.deposit(player, betrag); // Use the player from scope
+            } catch (NumberFormatException e) {
+                player.sendMessage("§cNur Zahlen!");
+                return null;
             }
+        }
+    );
+}
 
-            if (name.equals("§cAuszahlen")) {
-                player.closeInventory();
-                new AnvilGUI.Builder()
-                        .plugin(Bukkit.getPluginManager().getPlugin("PinguBank"))
-                        .title("Betrag auszahlen")
-                        .text("")
-                        .onComplete((p, text) -> {
-                            try {
-                                double betrag = Double.parseDouble(text);
-                                return BankManager.withdraw(p, betrag);
-                            } catch (NumberFormatException e) {
-                                return AnvilGUI.Response.text("§cNur Zahlen!");
-                            }
-                        })
-                        .open(player);
+if (name.equals("§cAuszahlen")) {
+    player.closeInventory();
+    new AnvilGUI(
+        Bukkit.getPluginManager().getPlugin("PinguBank"),
+        player,
+        (input) -> {
+            try {
+                double betrag = Double.parseDouble(input);
+                return BankManager.withdraw(player, betrag);
+            } catch (NumberFormatException e) {
+                player.sendMessage("§cNur Zahlen!");
+                return null;
             }
+        }
+    );
+}
         }
     }
 }
