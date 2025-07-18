@@ -19,7 +19,7 @@ jobs:
           java-version: 17
 
       - name: Build with Maven
-        working-directory: PinguBank/PinguBank
+        working-directory: PinguBank
         run: mvn clean package -DskipTests
         
       - name: Upload JAR
