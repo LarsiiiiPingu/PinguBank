@@ -1,19 +1,19 @@
 name: PinguBank
 version: 1.0
-main: de.pingubank.PinguBank
+main: de.pingubank
 api-version: 1.20
 author: Lars
-description: Ein einfaches Bank-Plugin mit GUI, Kredit und Transfersystem
+description: Ein Bank-Plugin mit GUI Für Pinguino
 
 commands:
   bank:
-    description: Öffnet die Bank-GUI
+    description: Öffnet das Bank-GUI
   geld:
-    description: Zeigt dein Handkontoguthaben
+    description: Zeigt dein Kontostand
   geldbank:
-    description: Zeigt dein Bankkontoguthaben
+    description: Zeigt dein Bankkontostand
   pay:
-    description: Zahlt mit dem Handkonto an einen Spieler
+    description: Zahlt mit dem Kontostand an einen Spieler
     usage: /pay <Spieler> <Betrag>
   transfer:
     description: Zahlt mit dem Bankkonto an einen Spieler
